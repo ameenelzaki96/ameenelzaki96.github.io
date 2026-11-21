@@ -32,6 +32,22 @@ const POSTS = [
     tag: "Statistics",
     read: "7 min",
     excerpt: "Averaging failure times gives the wrong answer when most devices haven't failed yet. Kaplan–Meier handles that, and it surfaced a problem I wasn't looking for."
+  },
+  {
+    slug: "iot-path-dependency",
+    title: "The sticky reality of market dominance in telematics",
+    date: "2026-05-20",
+    tag: "Industry",
+    read: "5 min",
+    excerpt: "In telematics, the earlier technology often beats the better one. Path dependency, switching costs, and why usage-based insurance may break the pattern."
+  },
+  {
+    slug: "iot-roofline",
+    title: "The Roofline: why telematics isn't pure SaaS",
+    date: "2026-04-20",
+    tag: "Industry",
+    read: "5 min",
+    excerpt: "Before the high-margin software zone, there's a low-margin physical one: shipping, installing, splicing wires. You have to get through it first."
   }
 ];
 
