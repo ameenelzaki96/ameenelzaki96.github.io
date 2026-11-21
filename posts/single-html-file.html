@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why I ship every analysis as a single HTML file — Ameen Elzaki</title>
+<meta name="description" content="The case for self-contained, serverless HTML reports for operational analytics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a href="../index.html" class="logo">ameen<span>.</span>elzaki</a>
+  <ul><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#about">About</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+  <a href="../index.html#contact" class="cta">Work with me</a><button class="menu-btn" aria-label="Menu">☰</button>
+</div></nav>
+
+<article class="article">
+  <a href="../blog.html" class="back">← All posts</a>
+  <h1>Why I ship every analysis as a single HTML file</h1>
+  <div class="meta"><span>19 Nov 2026</span><span>·</span><span>5 min read</span><span>·</span><span>Ideas</span></div>
+
+  <p>Look at my GitHub and you'll notice a pattern: almost every project ends in an <code>index.html</code>. A survival analysis, a fuel heat map, a cost map, a trip-distance report. Each one is a single page that opens in any browser and needs no server.</p>
+  <p>That's deliberate. This post explains why.</p>
+
+  <h2>1. The audience is on a phone</h2>
+  <p>Operations managers aren't sitting in a BI tool. They're in the field, in meetings, or on WhatsApp. A file they can open with one tap gets looked at. A dashboard behind a login, a VPN and a licence usually doesn't.</p>
+
+  <h2>2. A snapshot is a feature, not a bug</h2>
+  <p>Live dashboards keep changing. That's great for monitoring and bad for decisions. When a manager says "the report showed 316 offline devices", everyone should be able to open the <em>same</em> report and see 316. A dated, static page becomes a record of what we knew and when.</p>
+
+  <h2>3. Nothing to maintain</h2>
+  <p>No server to patch, no database connection to break and no API key to rotate. I inline the libraries, such as Leaflet and the heat-map plugin, and embed the data in the page, so it keeps working years later. GitHub Pages hosts it for free.</p>
+
+  <h2>4. Privacy is easier to reason about</h2>
+  <p>Because the data is baked in, I know exactly what's exposed: only what I put there. Before anything goes public I strip plates, IMEIs and company names, replace clients with codes, and coarsen coordinates to between 110 m and 1 km. With a static page there's no risk of an API quietly returning more than I intended.</p>
+
+  <h2>5. Bilingual from the start</h2>
+  <p>Many of my readers prefer Arabic. A static page makes it easy to ship <code>index.html</code> in Arabic (RTL) next to <code>en.html</code> in English, with a toggle between them. It's the same data with a different audience.</p>
+
+  <blockquote>The best analysis is the one people actually open.</blockquote>
+
+  <h2>When I wouldn't do this</h2>
+  <p>Real-time monitoring, alerting, and anything where many people edit data together still need a proper application. For answering a single question and sharing the answer, though, a single HTML file is hard to beat.</p>
+  <p>The site you're reading is built the same way: plain HTML and CSS with no framework.</p>
+</article>
+
+<footer><div class="wrap"><span>© <span data-year></span> Ameen Elzaki</span><span><a href="../blog.html">Blog</a> · <a href="../index.html">Home</a></span></div></footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

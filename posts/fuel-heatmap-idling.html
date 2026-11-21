@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The fuel wasn't on the highway — Ameen Elzaki</title>
+<meta name="description" content="What a fleet fuel heat map revealed about idling versus long-haul routes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a href="../index.html" class="logo">ameen<span>.</span>elzaki</a>
+  <ul><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#about">About</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+  <a href="../index.html#contact" class="cta">Work with me</a><button class="menu-btn" aria-label="Menu">☰</button>
+</div></nav>
+
+<article class="article">
+  <a href="../blog.html" class="back">← All posts</a>
+  <h1>The fuel wasn't on the highway. It was in the parking lot.</h1>
+  <div class="meta"><span>27 Aug 2026</span><span>·</span><span>6 min read</span><span>·</span><span>Fleet</span></div>
+
+  <p>A logistics operator wanted to know which truck burned the most fuel and why. I expected the answer to be about routes: the long Riyadh–Jeddah run, maybe a detour or two. The data said otherwise.</p>
+
+  <h2>Step one: find the top consumer</h2>
+  <p>"Most fuel" means the most litres actually filled, not an estimate. One heavy truck stood out: <strong>3,197 L over 32,526 km</strong> between April and August, with <strong>24 Riyadh⇄Jeddah legs</strong> (about 12 round trips) and 173 hours of idling.</p>
+  <p>Seen on its own, that looks bad. It looks less bad once you compare it with the rest of the fleet.</p>
+
+  <h2>Step two: put the whole fleet on one map</h2>
+  <p>I aggregated GPS positions onto a ~110 m grid and weighted each cell by dwell density, so the heat map shows where trucks <em>spend time</em> rather than just where they pass through. Then I reduced each truck's timeline to a sequence of city visits and counted every crossing, which made the corridors visible:</p>
+  <ul>
+    <li>Riyadh ⇄ Jeddah dominates, with 37 legs</li>
+    <li>followed by Riyadh ⇄ Makkah and Jeddah ⇄ Makkah</li>
+  </ul>
+
+  <h2>Step three: the surprise</h2>
+  <p>The fleet turned out to be a <strong>two-tier operation</strong>. Heavy trucks run the corridor at about 9.7 L/100 km with very little idling. Light pickups handle local Riyadh work, and they idle far more per kilometre driven.</p>
+
+  <blockquote>The obvious fix, moving city trucks onto the corridor, wouldn't save anything.</blockquote>
+
+  <p>The two roles need different weight classes, and the waste isn't in the long-haul runs. It's in engines left running at drop-offs, in traffic and in yards. The levers that matter are:</p>
+  <ol>
+    <li><strong>Cut idling</strong> in the city fleet, through driver feedback, idle alerts and engine-off policies.</li>
+    <li><strong>Maximize load</strong> on corridor runs, because a half-empty heavy truck on a 950 km leg is where real money goes.</li>
+  </ol>
+
+  <h2>What I took away</h2>
+  <p>The person asking usually has a hypothesis built into the question. "Which route costs the most?" assumes the problem is a route. A heat map weighted by <em>time spent</em> rather than <em>distance covered</em> reframed the problem around behaviour.</p>
+  <p>The map was also anonymized: no plates, no company names, coordinates coarsened to about 110 m, so no depot or customer stop can be pinpointed.</p>
+
+  <div class="callout">🗺️ Explore the <a href="https://ameenelzaki96.github.io/fleet-movement-heatmap/" target="_blank" rel="noopener">single-truck map</a> and the <a href="https://ameenelzaki96.github.io/fleet-movement-heatmap/fleet.html" target="_blank" rel="noopener">full-fleet dashboard ↗</a>.</div>
+</article>
+
+<footer><div class="wrap"><span>© <span data-year></span> Ameen Elzaki</span><span><a href="../blog.html">Blog</a> · <a href="../index.html">Home</a></span></div></footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

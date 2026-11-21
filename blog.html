@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Ameen Elzaki</title>
+<meta name="description" content="Notes on fleet telematics, statistics, maps and doing data work in operations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">ameen<span>.</span>elzaki</a>
+    <ul>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+    </ul>
+    <a href="index.html#contact" class="cta">Work with me</a>
+    <button class="menu-btn" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Blog</span>
+    <h1 style="margin-top:16px">Ideas & field notes</h1>
+    <p>What I learn from doing data work inside a fleet-telematics operation: statistics, maps, mistakes and the occasional bit of calculus.</p>
+    <div class="filters" style="margin-top:28px" id="tag-filters"></div>
+  </div>
+</header>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="grid g2" id="post-list"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span data-year></span> Ameen Elzaki</span>
+    <span><a href="index.html">Home</a> · <a href="https://github.com/ameenelzaki96" target="_blank" rel="noopener">GitHub</a></span>
+  </div>
+</footer>
+
+<script src="assets/posts.js"></script>
+<script>
+  const list = document.getElementById('post-list');
+  const tf = document.getElementById('tag-filters');
+  const tags = ['All', ...new Set(POSTS.map(p => p.tag))];
+  const render = t => list.innerHTML = POSTS.filter(p => t === 'All' || p.tag === t).map(p => postCard(p)).join('');
+  tf.innerHTML = tags.map((t,i) => `<button class="${i===0?'on':''}" data-t="${t}">${t}</button>`).join('');
+  tf.addEventListener('click', e => {
+    if (!e.target.dataset.t) return;
+    tf.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === e.target));
+    render(e.target.dataset.t);
+  });
+  render('All');
+</script>
+<script src="assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checking a vehicle's odometer with calculus — Ameen Elzaki</title>
+<meta name="description" content="Computing trip distance as the area under the speed curve, and comparing it with GPS and CAN odometer readings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a href="../index.html" class="logo">ameen<span>.</span>elzaki</a>
+  <ul><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#about">About</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+  <a href="../index.html#contact" class="cta">Work with me</a><button class="menu-btn" aria-label="Menu">☰</button>
+</div></nav>
+
+<article class="article">
+  <a href="../blog.html" class="back">← All posts</a>
+  <h1>Checking a vehicle's odometer with first-year calculus</h1>
+  <div class="meta"><span>17 Nov 2026</span><span>·</span><span>6 min read</span><span>·</span><span>Fleet</span></div>
+
+  <p>Every tracking platform reports a trip distance. But which distance? A modern telematics device gives you at least three, and they rarely agree. I took one short trip, about nine minutes in Riyadh, and computed it three ways.</p>
+
+  <h2>Distance is the area under the speed curve</h2>
+  <p>If you plot speed against time, the area under the curve is the distance travelled. That's the fundamental theorem of calculus applied to a car. The device samples speed every few seconds, so I approximated the integral with the <strong>trapezoidal rule</strong>: join consecutive points with straight lines and add up the trapezoids.</p>
+<pre><code>distance ≈ Σ ½ · (v[i] + v[i+1]) · (t[i+1] − t[i])</code></pre>
+  <p>For speed I used GPS speed (<code>position_speed</code>). The device also reports CAN-bus speed, and for this trip the two were nearly identical.</p>
+
+  <h2>Three answers</h2>
+  <table>
+    <tr><th>Method</th><th>Distance</th></tr>
+    <tr><td>Integral of speed (trapezoidal)</td><td>3.763 km</td></tr>
+    <tr><td>GPS distance (sum of point-to-point)</td><td>3.858 km</td></tr>
+    <tr><td>CAN odometer (end − start)</td><td>4.4 km</td></tr>
+  </table>
+
+  <h2>Why they disagree, and why that's fine</h2>
+  <ul>
+    <li><strong>The integral runs slightly low</strong> because straight lines between samples cut corners whenever the car accelerates or brakes between readings. Sparse samples mean more lost area.</li>
+    <li><strong>GPS distance runs slightly high</strong> because position jitter adds small zig-zags, and each one adds a few metres.</li>
+    <li><strong>The CAN odometer</strong> usually reports in 0.1 km or whole-km steps, so on a 4 km trip the rounding alone can cause a large relative error. Over a month of driving it is the most reliable of the three.</li>
+  </ul>
+
+  <blockquote>Two independent methods agreeing within 3% is a strong check that the data is sound.</blockquote>
+
+  <p>The practical use is validation. When a customer disputes a trip distance, or a device looks miscalibrated, an independent calculation from raw speed is a quick, explainable check. If the integral and the GPS distance agree but the odometer is far off over a long period, the odometer reading is probably the problem.</p>
+
+  <h2>Writing it in Arabic</h2>
+  <p>I built the report in Arabic, right-to-left, because the people using it work in Arabic. Getting charts, numbers and equations to sit correctly in an RTL page takes more care than people expect, but it makes the difference between a report people read and one they skip.</p>
+
+  <div class="callout">📐 Report and code: <a href="https://github.com/ameenelzaki96/Distance-via-Speed-Integral-in-Arabic" target="_blank" rel="noopener">Distance via Speed Integral ↗</a></div>
+</article>
+
+<footer><div class="wrap"><span>© <span data-year></span> Ameen Elzaki</span><span><a href="../blog.html">Blog</a> · <a href="../index.html">Home</a></span></div></footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

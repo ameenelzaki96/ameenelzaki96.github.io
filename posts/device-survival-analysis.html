@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>577 devices that never said hello — Ameen Elzaki</title>
+<meta name="description" content="Using Kaplan–Meier survival analysis to measure how long GPS tracking devices keep transmitting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a href="../index.html" class="logo">ameen<span>.</span>elzaki</a>
+  <ul><li><a href="../index.html#services">Services</a></li><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#about">About</a></li><li><a href="../blog.html" class="active">Blog</a></li></ul>
+  <a href="../index.html#contact" class="cta">Work with me</a><button class="menu-btn" aria-label="Menu">☰</button>
+</div></nav>
+
+<article class="article">
+  <a href="../blog.html" class="back">← All posts</a>
+  <h1>577 devices that never said hello: survival analysis for GPS trackers</h1>
+  <div class="meta"><span>20 Aug 2026</span><span>·</span><span>7 min read</span><span>·</span><span>Statistics</span></div>
+
+  <p>Someone asked me a simple question: <strong>how long does a tracking device last after we install it on a vehicle?</strong></p>
+  <p>The obvious approach is to take every device that stopped working, measure the time from install to last signal, and average it. That approach gives the wrong answer, and the reason it's wrong is the most useful idea I've borrowed from statistics.</p>
+
+  <h2>The problem with averaging</h2>
+  <p>Most devices haven't failed yet. A device installed three weeks ago that's still transmitting tells you something: it lasted <em>at least</em> three weeks. If you leave it out, you only average the failures and the lifetime looks much shorter than it really is. If you count it as "three weeks" you are treating a device that is still working as though it had died.</p>
+  <p>Statisticians call this <strong>censoring</strong>, and survival analysis exists to handle it. Medicine uses the same tools to track patients after treatment, and engineering uses them to track components. GPS trackers turn out to be a good fit.</p>
+
+  <h2>How I set it up</h2>
+  <ul>
+    <li><strong>Subject:</strong> one device installed on one vehicle.</li>
+    <li><strong>Start (t = 0):</strong> the install date, taken from the PostgreSQL device roster.</li>
+    <li><strong>Event:</strong> silent for more than 14 days. The true last-seen time came from ClickHouse, taking <code>max(created_at)</code> per IMEI over roughly 774M rows.</li>
+    <li><strong>Censored:</strong> still transmitting today.</li>
+    <li><strong>Estimator:</strong> Kaplan–Meier, with Greenwood 95% confidence intervals.</li>
+  </ul>
+  <p>"Silent" measures transmission continuity, not strictly hardware failure. A parked car, a suspended SIM and a removed unit all look the same in the data. For maintenance purposes that is exactly the signal you want, because each of them means someone has to go and look.</p>
+
+  <h2>What came out</h2>
+  <table>
+    <tr><th>Metric</th><th>Value</th></tr>
+    <tr><td>Devices installed</td><td>4,250</td></tr>
+    <tr><td>Went silent (&gt;14 days)</td><td>413</td></tr>
+    <tr><td>Still transmitting</td><td>3,260</td></tr>
+    <tr><td>Survival at 30 / 90 / 180 days</td><td>95.4% / 90.9% / 81.2%</td></tr>
+    <tr><td>Median survival</td><td>Not reached</td></tr>
+  </table>
+  <p>"Median not reached" sounds like a non-answer, but it's good news: more than half of the fleet is still transmitting, so we can't yet say when the typical device dies.</p>
+
+  <blockquote>The biggest finding wasn't on the curve at all: 577 devices never transmitted a single byte.</blockquote>
+
+  <p>Those devices had to be excluded from the survival model, since they never "lived" in the first place, and they became their own investigation. That kind of failure isn't wear-out. It points to the install process or the SIM. You fix it with a checklist at install time, not with better hardware.</p>
+  <p>The second pattern was that the failures we did see <strong>clustered in the first ~150 days</strong> and then the curve flattened. That's the classic infant-mortality shape: devices that make it past the first five months tend to keep going.</p>
+
+  <h2>What I took away</h2>
+  <ol>
+    <li><strong>The question shapes the method.</strong> "How long do devices last?" sounds like an average, but it's really a survival question.</li>
+    <li><strong>The records you exclude can be the most important ones.</strong> The 577 devices that never transmitted were outside the model, and they were the most actionable result.</li>
+    <li><strong>Anonymize before publishing.</strong> I ranked clients internally, then renamed them <code>Client 1…N</code> so the report could be shared publicly.</li>
+  </ol>
+
+  <div class="callout">📊 The full interactive report is on <a href="https://ameenelzaki96.github.io/Survival-Analysis" target="_blank" rel="noopener">GitHub Pages ↗</a> and the code is <a href="https://github.com/ameenelzaki96/Survival-Analysis" target="_blank" rel="noopener">here</a>.</div>
+</article>
+
+<footer><div class="wrap"><span>© <span data-year></span> Ameen Elzaki</span><span><a href="../blog.html">Blog</a> · <a href="../index.html">Home</a></span></div></footer>
+<script src="../assets/main.js"></script>
+</body>
+</html>

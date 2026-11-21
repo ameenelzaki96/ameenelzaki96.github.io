@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ameen Elzaki — Fleet & Operations Data Analytics</title>
+<meta name="description" content="I turn raw GPS telemetry, operations records and financial data into maps, dashboards and decisions. Fleet analytics, statistical modelling and bilingual (Arabic/English) reporting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">ameen<span>.</span>elzaki</a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+    <a href="#contact" class="cta">Work with me</a>
+    <button class="menu-btn" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <canvas id="trails"></canvas>
+  <div class="wrap">
+    <span class="eyebrow">Data analytics · Riyadh, KSA</span>
+    <h1>I turn <em>telemetry</em> and operations data into decisions you can see.</h1>
+    <p class="lead">Fleet analytics, interactive maps, survival and time-series modelling, built from real production data and delivered as clear, bilingual (Arabic/English) reports that run anywhere.</p>
+    <div class="btns">
+      <a href="#work" class="btn primary">See my work →</a>
+      <a href="blog.html" class="btn ghost">Read the blog</a>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><b>774M+</b><span>telemetry rows analysed</span></div>
+      <div class="stat"><b>4,250</b><span>devices in one survival study</span></div>
+      <div class="stat"><b>10+</b><span>published analyses & maps</span></div>
+      <div class="stat"><b>AR / EN</b><span>bilingual, RTL-ready reports</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>What I can do for you</h2>
+      <p>Each engagement ends with something you can use: a live map, a dashboard, a model, or a report with a clear recommendation.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal">
+        <div class="ico">◎</div>
+        <h3>Fleet & telematics analytics</h3>
+        <p>Find out what your vehicles and tracking devices are actually doing, using GPS, CAN and fuel data.</p>
+        <ul>
+          <li>Fuel economy & idling analysis</li>
+          <li>Route / corridor detection</li>
+          <li>Offline-device & maintenance cost audits</li>
+          <li>Trip & odometer validation</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ico">⌖</div>
+        <h3>Interactive maps & dashboards</h3>
+        <p>Single-file HTML maps and dashboards that need no server: open them in a browser, share them, or host them on GitHub Pages.</p>
+        <ul>
+          <li>Heat maps & movement trails</li>
+          <li>Cost and coverage maps</li>
+          <li>KPI dashboards with filters</li>
+          <li>Arabic (RTL) + English versions</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ico">∿</div>
+        <h3>Statistical modelling</h3>
+        <p>When the right answer needs more than an average, I apply the proper statistical model.</p>
+        <ul>
+          <li>Survival analysis (Kaplan–Meier)</li>
+          <li>Time series & Kalman filters</li>
+          <li>Marketing mix / ad-stock models</li>
+          <li>Regression & ML fundamentals</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ico">$</div>
+        <h3>Financial & market analysis</h3>
+        <p>Fundamental comparisons of listed companies using their financial statements and price history.</p>
+        <ul>
+          <li>Peer valuation & ratio analysis</li>
+          <li>Dynamic CAPM / portfolio analysis</li>
+          <li>Volatility modelling</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ico">⛁</div>
+        <h3>Data pipelines & SQL</h3>
+        <p>I pull and join data from production systems safely, using read-only access, and turn it into tidy analysis-ready tables.</p>
+        <ul>
+          <li>PostgreSQL & ClickHouse queries</li>
+          <li>Joining operational + telemetry data</li>
+          <li>Anonymization for public sharing</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="ico">✎</div>
+        <h3>Operational reporting</h3>
+        <p>I turn messy receipts, logs and spreadsheets into reports that management can act on.</p>
+        <ul>
+          <li>Field-service cost tracking</li>
+          <li>Bilingual executive summaries</li>
+          <li>Recurring report automation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Selected work</h2>
+      <div class="filters">
+        <button class="on" data-f="all">All</button>
+        <button data-f="fleet">Fleet</button>
+        <button data-f="maps">Maps</button>
+        <button data-f="stats">Statistics</button>
+        <button data-f="finance">Finance</button>
+      </div>
+    </div>
+
+    <div class="grid g3">
+      <article class="card project reveal" data-cat="fleet stats">
+        <div class="tags"><span class="tag">Survival analysis</span><span class="tag">ClickHouse</span></div>
+        <h3>Tracking-device survival analysis</h3>
+        <p>How long does a GPS device keep transmitting after installation? A Kaplan–Meier study with Greenwood confidence intervals across a whole fleet.</p>
+        <div class="metric">577</div>
+        <div class="metric-l">devices that never transmitted at all, an install/SIM problem rather than wear-out</div>
+        <div class="links">
+          <a href="https://ameenelzaki96.github.io/Survival-Analysis" target="_blank" rel="noopener">Live report ↗</a>
+          <a href="https://github.com/ameenelzaki96/Survival-Analysis" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card project reveal" data-cat="fleet maps">
+        <div class="tags"><span class="tag">Heat map</span><span class="tag">Fuel</span></div>
+        <h3>Fleet fuel & movement analytics</h3>
+        <p>Heat maps, per-truck trails and fuel economy for a logistics fleet on the Riyadh–Jeddah corridor. The data showed that idling, not routing, was where the fuel was going.</p>
+        <div class="metric">32,526 km</div>
+        <div class="metric-l">driven by the top fuel consumer, with 24 Riyadh⇄Jeddah legs</div>
+        <div class="links">
+          <a href="https://ameenelzaki96.github.io/fleet-movement-heatmap/" target="_blank" rel="noopener">Live map ↗</a>
+          <a href="https://github.com/ameenelzaki96/fleet-movement-heatmap" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card project reveal" data-cat="fleet maps">
+        <div class="tags"><span class="tag">Cost model</span><span class="tag">Leaflet</span></div>
+        <h3>Offline-device maintenance cost map</h3>
+        <p>Every device silent for 15+ days is plotted at its last location and costed by distance from the nearest service city, including round-trip fuel.</p>
+        <div class="metric">~21,080 SAR</div>
+        <div class="metric-l">estimated cost to service 316 offline devices</div>
+        <div class="links">
+          <a href="https://github.com/ameenelzaki96/tracking-stale-map-KSA-all-regions" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card project reveal" data-cat="maps fleet">
+        <div class="tags"><span class="tag">Bilingual</span><span class="tag">Operations</span></div>
+        <h3>Technician travel-cost map</h3>
+        <p>An Arabic/English interactive map of travel and fuel fees paid to installers working outside the main cities, built from operational receipts.</p>
+        <div class="metric">386</div>
+        <div class="metric-l">devices installed across 19 locations outside main cities</div>
+        <div class="links">
+          <a href="https://github.com/ameenelzaki96/Operational-Interactive-Map" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card project reveal" data-cat="fleet stats">
+        <div class="tags"><span class="tag">Numerical integration</span><span class="tag">CAN bus</span></div>
+        <h3>Distance from the speed integral</h3>
+        <p>Checks a vehicle's reported trip distance by integrating its speed curve (trapezoidal rule) and comparing the result with GPS distance and the CAN odometer.</p>
+        <div class="metric">3.76 vs 3.86 km</div>
+        <div class="metric-l">integrated distance vs GPS distance on the same trip</div>
+        <div class="links">
+          <a href="https://github.com/ameenelzaki96/Distance-via-Speed-Integral-in-Arabic" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card project reveal" data-cat="stats">
+        <div class="tags"><span class="tag">Kalman filter</span><span class="tag">R / Python</span></div>
+        <h3>Time series & state-space models</h3>
+        <p>Dynamic CAPM, local-level Kalman filters, Koyck and ADL ad-stock models, and marketing mix modelling, all worked through from first principles.</p>
+        <div class="links">
+          <a href="https://github.com/ameenelzaki96/timeseries" target="_blank" rel="noopener">Notebooks</a>
+        </div>
+      </article>
+
+      <article class="card project reveal" data-cat="finance">
+        <div class="tags"><span class="tag">Fundamentals</span><span class="tag">yfinance</span></div>
+        <h3>Equity research notebooks</h3>
+        <p>Is Jacobs undervalued against engineering consultancy peers? Carrier vs other HVAC players. Uber vs Lyft as two-sided marketplaces.</p>
+        <div class="links">
+          <a href="https://github.com/ameenelzaki96/Financial-Analysis" target="_blank" rel="noopener">Notebooks</a>
+        </div>
+      </article>
+
+      <article class="card project reveal" data-cat="stats">
+        <div class="tags"><span class="tag">ML from scratch</span></div>
+        <h3>Machine learning fundamentals</h3>
+        <p>Gradient descent, logistic regression via gradient ascent, the perceptron, and a two-layer neural network, implemented by hand.</p>
+        <div class="links">
+          <a href="https://github.com/ameenelzaki96/Machine-learning-AI" target="_blank" rel="noopener">Notebooks</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>How I work</h2></div>
+    <div class="steps">
+      <div class="step reveal"><h4>Ask one question</h4><p>Start with a single operational question, such as "how long do devices last?" or "where does the fuel go?"</p></div>
+      <div class="step reveal"><h4>Go to the source</h4><p>Pull from the production databases with read-only queries, not from someone's exported spreadsheet.</p></div>
+      <div class="step reveal"><h4>Use the right model</h4><p>Handle censoring, lags and bias properly, because a plain average can be misleading.</p></div>
+      <div class="step reveal"><h4>Ship something visual</h4><p>Deliver a map or report that anyone can open, anonymized when it needs to be shared.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="alt">
+  <div class="wrap about">
+    <div class="reveal">
+      <div class="sec-head"><h2>About me</h2></div>
+      <p>I'm <strong>Ameen Elzaki</strong>, a data analyst working in fleet telematics in Saudi Arabia. My day-to-day work is on the operations side of a GPS tracking company: devices, installers, vehicles and the data they produce.</p>
+      <p>My background is in <strong>statistics and quantitative finance</strong>: time series, state-space models, econometrics and valuation. I now apply those methods to operational problems such as device reliability, field-service costs, fuel efficiency and trip accuracy.</p>
+      <p>I care about answers people can actually use, so most of my work ends as a single interactive page that a manager can open on a phone, in Arabic or English.</p>
+    </div>
+    <div class="reveal">
+      <div class="skill-group"><h5>Analysis</h5><div class="skills"><span>Python</span><span>R</span><span>pandas</span><span>statsmodels</span><span>Jupyter</span></div></div>
+      <div class="skill-group"><h5>Data</h5><div class="skills"><span>SQL</span><span>PostgreSQL</span><span>ClickHouse</span><span>Excel</span></div></div>
+      <div class="skill-group"><h5>Visualisation</h5><div class="skills"><span>Leaflet</span><span>SVG / HTML</span><span>Heat maps</span><span>Dashboards</span></div></div>
+      <div class="skill-group"><h5>Methods</h5><div class="skills"><span>Kaplan–Meier</span><span>Kalman filter</span><span>Distributed lags</span><span>Regression</span><span>Valuation</span></div></div>
+      <div class="skill-group"><h5>Languages</h5><div class="skills"><span>Arabic</span><span>English</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST POSTS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>From the blog</h2>
+      <a href="blog.html" class="btn ghost">All posts →</a>
+    </div>
+    <div class="grid g3" id="latest-posts"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact alt">
+  <div class="wrap reveal">
+    <span class="eyebrow">Let's talk</span>
+    <h2 style="margin-top:18px">Have data you're not sure what to do with?</h2>
+    <p>Fleet operators, logistics teams and anyone with a pile of GPS or operations data: send me your question and I'll tell you what the data can answer.</p>
+    <div class="btns">
+      <a href="mailto:ameenelzaki@outlook.com" class="btn primary">Email me</a>
+      <a href="https://github.com/ameenelzaki96" target="_blank" rel="noopener" class="btn ghost">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/ameen-elzaki/" target="_blank" rel="noopener" class="btn ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span data-year></span> Ameen Elzaki</span>
+    <span><a href="blog.html">Blog</a> · <a href="https://github.com/ameenelzaki96" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/ameen-elzaki/" target="_blank" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+
+<script src="assets/posts.js"></script>
+<script>
+  // render latest 3 posts on the home page
+  document.getElementById('latest-posts').innerHTML = POSTS.slice(0,3).map(postCard).join('');
+</script>
+<script src="assets/main.js"></script>
+</body>
+</html>
